@@ -1,0 +1,21 @@
+CREATE TABLE users (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    username VARCHAR(50) NOT NULL,
+    password VARCHAR(100) NOT NULL,
+    role ENUM('admin', 'user') NOT NULL
+);
+
+CREATE TABLE movies (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    title VARCHAR(100) NOT NULL,
+    genre VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE rents (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    rent_date DATE NOT NULL,
+    return_date DATE,
+    movie_id INT NOT NULL,
+    renter VARCHAR(50) NOT NULL,
+    FOREIGN KEY (movie_id) REFERENCES movies(id)
+);
